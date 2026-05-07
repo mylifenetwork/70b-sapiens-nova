@@ -1,0 +1,1 @@
+function e(){const t=window.location.hash;if(t){const n=t.substring(1),o=document.getElementById(n);o&&setTimeout(()=>{const s=o.getBoundingClientRect().top+window.scrollY-120;window.scrollTo({top:s,behavior:"smooth"})},100)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",e):e();document.addEventListener("astro:page-load",e);
