@@ -59,10 +59,9 @@ export default function Header() {
           {/* Desktop Layout - 3 Column Grid */}
           <div className="hidden md:grid grid-cols-3 items-center gap-6">
             {/* Left Navigation */}
-            <div className="flex items-center gap-6 justify-start pl-6">
-              <Link href="/#who-we-are" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">WHO WE ARE</Link>
-              <Link href="/programs" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">PROGRAMMES</Link>
-              <Link href="/checkout" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">ENROL NOW</Link>
+            <div className="flex items-center gap-4 justify-start pl-6">
+              <Link href="/#who-we-are" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide whitespace-nowrap">WHO WE ARE</Link>
+              <Link href="/programs" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide whitespace-nowrap">PROGRAMMES</Link>
             </div>
             {/* Centered Logo */}
             <div className="flex justify-center">
@@ -71,9 +70,9 @@ export default function Header() {
               </Link>
             </div>
             {/* Right Navigation */}
-            <div className="flex items-center gap-6 justify-end">
-              <Link href="/#footer" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">CONTACT</Link>
-              <Link href="/checkout" className="nav-link rounded-full font-medium text-sm uppercase px-5 py-2 h-9 bg-program-cornfield text-white hover:bg-program-cornfield/90 inline-flex items-center justify-center transition-colors">ENROL NOW</Link>
+            <div className="flex items-center gap-4 justify-end pr-6">
+              <Link href="/#footer" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide whitespace-nowrap">CONTACT</Link>
+              <Link href="/checkout" className="nav-link rounded-full font-medium text-sm uppercase px-5 py-2 h-9 bg-program-cornfield text-white hover:bg-program-cornfield/90 inline-flex items-center justify-center transition-colors whitespace-nowrap">ENROL NOW</Link>
             </div>
           </div>
         </nav>
