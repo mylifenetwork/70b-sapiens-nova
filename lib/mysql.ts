@@ -5,6 +5,14 @@ import { join } from 'node:path';
 let pool: mysql.Pool | null = null;
 let envBootstrapped = false;
 
+type DatabaseConfig = {
+  host: string;
+  port: number;
+  user: string;
+  password: string;
+  database: string;
+};
+
 function bootstrapEnvFromExample(): void {
   if (envBootstrapped) {
     return;
@@ -47,6 +55,38 @@ function getRequiredEnv(name: string): string {
     throw new Error(`Missing required environment variable: ${name}`);
   }
   return value;
+}
+
+function getConnectionConfig(): DatabaseConfig {
+  bootstrapEnvFromExample();
+
+  const databaseUrl = getOptionalEnv('DATABASE_URL');
+  if (databaseUrl) {
+    const url = new URL(databaseUrl);
+    const database = url.pathname.replace(/^\//, '');
+
+    if (!url.hostname || !url.username || !database) {
+      throw new Error(
+        'Invalid DATABASE_URL. Expected mysql://user:password@host:port/database',
+      );
+    }
+
+    return {
+      host: url.hostname,
+      port: Number.parseInt(url.port || '3306', 10),
+      user: decodeURIComponent(url.username),
+      password: decodeURIComponent(url.password),
+      database: decodeURIComponent(database),
+    };
+  }
+
+  return {
+    host: getRequiredEnv('DB_HOST'),
+    port: Number.parseInt(process.env.DB_PORT || '3306', 10),
+    user: getRequiredEnv('DB_USER'),
+    password: getRequiredEnv('DB_PASSWORD'),
+    database: getRequiredEnv('DB_NAME'),
+  };
 }
 
 function parseBooleanEnv(value: string | undefined): boolean {
@@ -102,26 +142,23 @@ export function getMySqlPool(): mysql.Pool {
     return pool;
   }
 
-  const host = getRequiredEnv('DB_HOST');
-  const port = Number.parseInt(process.env.DB_PORT || '3306', 10);
-  const user = getRequiredEnv('DB_USER');
-  const database = getRequiredEnv('DB_NAME');
+  const connectionConfig = getConnectionConfig();
   const ssl = getSslConfig();
 
   console.log('[db] Creating MySQL pool', {
-    host,
-    port,
-    user,
-    database,
+    host: connectionConfig.host,
+    port: connectionConfig.port,
+    user: connectionConfig.user,
+    database: connectionConfig.database,
     sslEnabled: Boolean(ssl),
   });
 
   pool = mysql.createPool({
-    host,
-    port,
-    user,
-    password: getRequiredEnv('DB_PASSWORD'),
-    database,
+    host: connectionConfig.host,
+    port: connectionConfig.port,
+    user: connectionConfig.user,
+    password: connectionConfig.password,
+    database: connectionConfig.database,
     connectionLimit: Number.parseInt(process.env.DB_CONNECTION_LIMIT || '10', 10),
     waitForConnections: true,
     namedPlaceholders: false,
