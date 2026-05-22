@@ -60,9 +60,9 @@ export default function Header() {
           <div className="hidden md:grid grid-cols-3 items-center gap-6">
             {/* Left Navigation */}
             <div className="flex items-center gap-6 justify-start pl-6">
-              <Link href="/#who-we-are" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">WHO WE ARE</Link>
-              <Link href="/programs" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">PROGRAMMES</Link>
-              <Link href="/checkout" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">ENROL NOW</Link>
+              <Link href="/#about-us" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">WHO WE ARE</Link>
+              <Link href="/#programs" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">PROGRAMMES</Link>
+              <Link href="/checkout" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">ENROLL NOW</Link>
             </div>
             {/* Centered Logo */}
             <div className="flex justify-center">

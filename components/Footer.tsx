@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Image src="/images/logo.tWDsS5AM_Z1ztuyb.webp" alt="Sapiens Nova Academy" width={200} height={64} className="h-14 w-auto md:h-16" />
             <p className="text-sm md:text-base text-gray-800 font-sans max-w-[320px] leading-relaxed">
-              Embrace Your Future: Innovate, Heal, Inspire
+              Building the Future with Generative AI
             </p>
             <div className="flex gap-4 pt-2">
               <a href="https://www.linkedin.com/company/the-sapiens-nova-academy/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-70 transition-opacity">
