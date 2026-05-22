@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import type { FormEvent } from 'react';
+import { buildEnrollmentMailBody, toEnrollmentSubmission } from './submission';
 
 // Note: metadata must be exported from a Server Component, so it's defined in a separate wrapper
 // or declared here for static metadata purposes (works with Next.js App Router for non-dynamic data)
@@ -25,7 +26,6 @@ type FormData = {
   contactEmail: string;
   contactRelationship: string;
   contactPhone: string;
-  discountCode: string;
 };
 
 const INITIAL: FormData = {
@@ -41,7 +41,6 @@ const INITIAL: FormData = {
   contactEmail: '',
   contactRelationship: '',
   contactPhone: '',
-  discountCode: '',
 };
 
 function InputField({ id, label, type = 'text', value, onChange, required = true, placeholder = '' }: { id: keyof FormData; label: string; type?: string; value: string; onChange: (id: keyof FormData, val: string) => void; required?: boolean; placeholder?: string }) {
@@ -91,8 +90,9 @@ function SelectField({ id, label, value, onChange, options, required = true }: {
 
 export default function CheckoutPage() {
   const [formData, setFormData] = useState<FormData>(INITIAL);
-  const [discountApplied, setDiscountApplied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const selectedProg = PROGRAMMES.find((p) => p.value === formData.programme);
 
@@ -100,32 +100,45 @@ export default function CheckoutPage() {
     setFormData((prev) => ({ ...prev, [id]: val }));
   }
 
-  function handleApplyDiscount() {
-    if (formData.discountCode.trim()) {
-      setDiscountApplied(true);
-    }
-  }
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const body = [
-      `Programme: ${selectedProg?.label || formData.programme}`,
-      '',
-      `Student: ${formData.studentFirstName} ${formData.studentLastName}, Age ${formData.studentAge}`,
-      `Gender: ${formData.studentGender}`,
-      `School: ${formData.studentSchool}`,
-      `Country: ${formData.studentCountry}`,
-      '',
-      `Contact: ${formData.contactFirstName} ${formData.contactLastName} (${formData.contactRelationship})`,
-      `Email: ${formData.contactEmail}`,
-      `Phone: ${formData.contactPhone || 'N/A'}`,
-      '',
-      `Discount Code: ${formData.discountCode || 'None'}`,
-    ].join('\n');
+    setSubmitError('');
+    setIsSubmitting(true);
+    const submission = toEnrollmentSubmission(formData);
+    try {
+      const response = await fetch('/api/enrolments/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submission),
+      });
 
-    const mailtoLink = `mailto:info@sapiens-nova.com?subject=${encodeURIComponent('Enrolment Application: ' + (selectedProg?.label || formData.programme))}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-    setSubmitted(true);
+      const data = (await response.json().catch(() => null)) as
+        | {
+            ok?: boolean;
+            message?: string;
+            details?: { fieldErrors?: Record<string, string[]> };
+          }
+        | null;
+
+      if (!response.ok) {
+        const firstFieldError = data?.details?.fieldErrors
+          ? Object.values(data.details.fieldErrors).flat().find(Boolean)
+          : '';
+        throw new Error(firstFieldError || data?.message || 'Unable to submit application.');
+      }
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'Submission failed. Please try again. If the problem continues, use email fallback.',
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -138,7 +151,7 @@ export default function CheckoutPage() {
             </svg>
           </div>
           <h1 className="text-4xl font-normal font-serif text-black">Application Sent!</h1>
-          <p className="text-gray-600 text-lg">Your email client has opened with your application details. Please send the email to complete your enrolment. We&apos;ll get back to you within 2 business days.</p>
+          <p className="text-gray-600 text-lg">Your application has been submitted successfully. We&apos;ll get back to you within 2 business days.</p>
           <a href="/" className="inline-flex items-center justify-center rounded-full px-8 py-3 bg-[var(--brand-primary)] text-white font-medium hover:bg-[var(--brand-primary)]/90 transition-colors">
             Back to Home
           </a>
@@ -230,39 +243,27 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Discount Code */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
-              <h2 className="text-xl font-semibold font-serif text-black">Discount Code</h2>
-              <div className="flex gap-3">
-                <input
-                  type="text"
-                  value={formData.discountCode}
-                  onChange={(e) => handleChange('discountCode', e.target.value)}
-                  placeholder="Enter discount code"
-                  className="flex-1 px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={handleApplyDiscount}
-                  className="px-5 py-2.5 rounded-lg text-sm font-medium bg-gray-100 hover:bg-gray-200 transition-colors border border-gray-300"
-                >
-                  Apply
-                </button>
-              </div>
-              {discountApplied && (
-                <p className="text-sm text-green-600 font-medium">✓ Discount code applied. Our team will verify and adjust your pricing.</p>
-              )}
-            </div>
-
             {/* Submit */}
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full py-4 rounded-full font-semibold text-base uppercase tracking-wide text-white transition-all hover:opacity-90 hover:scale-[1.01]"
               style={{ backgroundColor: 'var(--brand-azure)' }}
             >
-              Proceed to Enquiry
+              {isSubmitting ? 'Submitting...' : 'Proceed to Enquiry'}
             </button>
-            <p className="text-center text-xs text-gray-500 -mt-4">Submitting this form will open your email client with your application details pre-filled.</p>
+            <p className="text-center text-xs text-gray-500 -mt-4">Your application will be submitted directly to our system.</p>
+            {submitError ? (
+              <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                <p>{submitError}</p>
+                <a
+                  className="mt-2 inline-block underline"
+                  href={`mailto:info@sapiens-nova.com?subject=${encodeURIComponent('Enrolment Application: ' + (selectedProg?.label || formData.programme))}&body=${encodeURIComponent(buildEnrollmentMailBody(toEnrollmentSubmission(formData)))}`}
+                >
+                  Use email fallback
+                </a>
+              </div>
+            ) : null}
           </form>
 
           {/* Order Summary */}
@@ -276,12 +277,6 @@ export default function CheckoutPage() {
                     <p className="text-xs text-gray-500 uppercase tracking-wide">{selectedProg.price}</p>
                   </div>
                   <div className="border-t pt-4 space-y-2">
-                    {discountApplied && (
-                      <div className="flex justify-between text-sm text-green-600">
-                        <span>Discount Applied</span>
-                        <span>— TBC</span>
-                      </div>
-                    )}
                     <div className="flex justify-between text-sm text-gray-600">
                       <span>Subtotal</span>
                       <span>To be confirmed</span>
