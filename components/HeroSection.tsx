@@ -43,11 +43,14 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container-large px-4 sm:px-6 text-center md:text-left w-full max-w-3xl md:max-w-none mx-auto md:mx-0">
         <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-normal text-white font-serif tracking-tight leading-[1.1]" style={{ textShadow: 'rgba(0,0,0,0.5) 0px 4px 12px, rgba(0,0,0,0.3) 0px 2px 4px', whiteSpace: 'pre-line' }}>
-          {`Embrace Your Future:\nInnovate, Heal, Inspire`}
+          {`Building the Future \n with Generative AI`}
         </h1>
+        <h2 className="sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white font-serif tracking-tight leading-[1.1]" style={{ textShadow: 'rgba(0,0,0,0.5) 0px 4px 12px, rgba(0,0,0,0.3) 0px 2px 4px', whiteSpace: 'pre-line' }}>
+          We empower the next generation through AI innovation, STEM education, digital humans, accessibility technology, and enterprise AI solutions.
+        </h2>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center md:justify-start items-center mt-8 md:mt-10">
           <Link href="/checkout" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary-light)', color: 'var(--text-primary)' }}>
-            ENROL NOW
+            ENROLL NOW
           </Link>
           <Link href="/programs" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary)', color: 'var(--primary-foreground)' }}>
             EXPLORE PROGRAMMES

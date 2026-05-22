@@ -1,0 +1,7 @@
+.soft-card {
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  box-shadow: 0 24px 60px -36px rgba(17, 24, 39, 0.45);
+  background-clip: padding-box;
+}
