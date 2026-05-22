@@ -49,7 +49,7 @@ export default function HeroSection() {
           We empower the next generation through AI innovation, STEM education, digital humans, accessibility technology, and enterprise AI solutions.
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center md:justify-start items-center mt-8 md:mt-10">
-          <Link href="/checkout" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary-light)', color: 'var(--text-primary)' }}>
+          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdtPrl4dJX4z_LP_XDTwL0C7ct68QhWGH6eMXMzHIsRd-4rsQ/viewform?usp=header" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary-light)', color: 'var(--text-primary)' }}>
             ENROLL NOW
           </Link>
           <Link href="/programs" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary)', color: 'var(--primary-foreground)' }}>

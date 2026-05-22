@@ -59,10 +59,10 @@ export default function Header() {
           {/* Desktop Layout - 3 Column Grid */}
           <div className="hidden md:grid grid-cols-3 items-center gap-6">
             {/* Left Navigation */}
-            <div className="flex items-center gap-6 justify-start pl-6">
+            <div className="flex items-center gap-6 justify-start pl-1">
               <Link href="/#about-us" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">WHO WE ARE</Link>
               <Link href="/#programs" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">PROGRAMMES</Link>
-              <Link href="/checkout" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">ENROLL NOW</Link>
+              {/* <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdtPrl4dJX4z_LP_XDTwL0C7ct68QhWGH6eMXMzHIsRd-4rsQ/viewform?usp=header" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">ENROLL NOW</Link> */}
             </div>
             {/* Centered Logo */}
             <div className="flex justify-center">
@@ -73,7 +73,7 @@ export default function Header() {
             {/* Right Navigation */}
             <div className="flex items-center gap-6 justify-end">
               <Link href="/#footer" className="nav-link hover:opacity-70 transition-opacity text-sm font-medium uppercase text-black tracking-wide">CONTACT</Link>
-              <Link href="/checkout" className="nav-link rounded-full font-medium text-sm uppercase px-5 py-2 h-9 bg-program-cornfield text-white hover:bg-program-cornfield/90 inline-flex items-center justify-center transition-colors">ENROL NOW</Link>
+              {/* <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdtPrl4dJX4z_LP_XDTwL0C7ct68QhWGH6eMXMzHIsRd-4rsQ/viewform?usp=header" className="nav-link rounded-full font-medium text-sm uppercase px-5 py-2 h-9 bg-program-cornfield text-white hover:bg-program-cornfield/90 inline-flex items-center justify-center transition-colors">ENROL NOW</Link> */}
             </div>
           </div>
         </nav>

@@ -20,7 +20,7 @@ function SectionLabel({ children }: { children: ReactNode }) {
 
 function SectionHeading({ label, title, description }: { label: string; title: string; description: string }) {
 	return (
-		<div className="max-w-3xl space-y-4">
+		<div className="max-w-5xl space-y-4">
 			<SectionLabel>{label}</SectionLabel>
 			<h2 className="font-serif text-4xl font-normal leading-[1.1] text-black md:text-5xl">{title}</h2>
 			<p className="text-lg leading-relaxed text-black/70">{description}</p>
@@ -156,7 +156,7 @@ export default function HomePage() {
 			<HeroSection />
 
 			<section id="about-us" className="w-full bg-[var(--bg-linen)] py-24 md:py-32">
-				<div className="mx-auto max-w-6xl px-6">
+				<div className="mx-auto max-w-7xl px-6">
 					<div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
 						<div className="space-y-6">
 							<SectionHeading
@@ -167,7 +167,7 @@ export default function HomePage() {
 						</div>
 
 						<div className="grid gap-4 sm:grid-cols-2">
-							<div className="soft-card mt-8 bg-white p-8">
+							<div className="soft-card mt-8 w-full sm:col-span-2 bg-white p-8">
 								<p className="text-sm uppercase tracking-widest text-black/50">Our platform bridges</p>
 								<ul className="mt-4 space-y-3 text-lg text-black">
 									{whoWeAreBridges.map((item) => (
@@ -237,12 +237,12 @@ export default function HomePage() {
 						description="Discover hands-on AI and STEM programs designed to inspire creativity, build future-ready skills, and turn innovative ideas into real-world projects."
 					/>
 
-					<div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+					<div className="mt-12 grid gap-6 lg:grid-cols-2">
 						{featuredPrograms.map((program) => {
 							const isDark = program.tone.includes('text-white');
 
 							return (
-								<article key={program.title} className={`soft-card mt-8 ${program.tone}`}>
+								<article key={program.title} className={`soft-card h-full ${program.tone}`}>
 									<div className="relative aspect-[4/3] overflow-hidden">
 										<Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-700 hover:scale-105" />
 									</div>
@@ -271,7 +271,7 @@ export default function HomePage() {
 
 			<section id="why-choose-us" className="w-full bg-white py-24 md:py-32">
   				<div className="mx-auto max-w-7xl px-6">
-    				<div className="max-w-4xl">
+    				<div className="max-w-5xl">
 						<SectionHeading
 							label="Why Choose Us"
 							title="Preparing Students for the Future of AI"

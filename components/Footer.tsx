@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_300px_400px] gap-12 lg:gap-16">
           {/* Brand Column */}
           <div className="space-y-4">
-            <Image src="/images/logo.tWDsS5AM_Z1ztuyb.webp" alt="Sapiens Nova Academy" width={200} height={64} className="h-14 w-auto md:h-16" />
+            <Image src="/images/logo.png" alt="Sapiens Nova Academy" width={200} height={64} className="h-14 w-auto md:h-16" />
             <p className="text-sm md:text-base text-gray-800 font-sans max-w-[320px] leading-relaxed">
               Building the Future with Generative AI
             </p>
@@ -39,11 +39,11 @@ export default function Footer() {
             <h3 className="font-serif font-medium text-xl md:text-2xl">Quick Links</h3>
             <ul className="space-y-3">
               {[
-                { href: '/#who-we-are', label: 'WHO WE ARE' },
+                { href: '/#about-us', label: 'WHO WE ARE' },
                 { href: '/programs', label: 'PROGRAMMES' },
-                { href: '/checkout', label: 'ENROL NOW' },
-                { href: '/data-privacy-terms', label: 'DATA PRIVACY TERMS' },
-                { href: '/#footer', label: 'CONTACT' },
+                { href: 'https://docs.google.com/forms/d/e/1FAIpQLSdtPrl4dJX4z_LP_XDTwL0C7ct68QhWGH6eMXMzHIsRd-4rsQ/viewform?usp=header', label: 'ENROLL NOW' },
+                // { href: '/data-privacy-terms', label: 'DATA PRIVACY TERMS' },
+                // { href: '/#footer', label: 'CONTACT' },
               ].map(({ href, label }) => (
                 <li key={href}>
                   <Link href={href} className="text-gray-700 hover:text-black transition-colors text-sm md:text-base font-sans">{label}</Link>
