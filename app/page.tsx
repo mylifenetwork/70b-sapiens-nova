@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
 	return (
-		<div className="inline-block rounded-full bg-[var(--brand-primary)] px-4 py-1">
+		<div className="inline-block rounded-full px-4 py-1" style={{ backgroundColor: 'var(--brand-primary)' }}>
 			<p className="font-sans text-sm font-normal uppercase tracking-wide text-white md:text-base">{children}</p>
 		</div>
 	);
@@ -34,7 +34,7 @@ function CTAButton({ href, children, variant = 'primary' }: { href: string; chil
 		<Link
 			href={href}
 			className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all hover:scale-[1.02] ${
-				isPrimary ? 'bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary)]/90' : 'bg-white text-black hover:bg-white/90'
+					isPrimary ? 'bg-(--brand-primary) text-white hover:bg-(--brand-primary)/90' : 'bg-white text-black hover:bg-white/90'
 			}`}
 		>
 			{children}
@@ -59,15 +59,17 @@ const focusAreas = [
 
 const featuredPrograms = [
 	{
-		title: 'STEM x AI Summer School',
-		subtitle: 'An immersive summer program where students explore STEM through hands-on AI projects, creative problem-solving, and real-world technology applications. Students will learn how to build, experiment, and turn ideas into practical innovations.',
+		title: 'Private AI Copilots',
+		subtitle: 'An intensive module on GenAI systems, secure AI engineering and enterprise applications, guiding learners through design, governance and on‑premise deployment of private, resilient AI solutions.',
 		image: '/images/imperial-motor-sport1.BHIDzqxG.jpg',
+		href: '/programs/stem-ai-summer-school',
 		tone: 'bg-[var(--brand-stromboli)] text-white',
 	},
 	{
 		title: 'HKSL Translation Technology',
 		subtitle: 'A hands-on innovation project focused on building AI-powered Hong Kong Sign Language translation technology. Students explore how generative AI and digital humans can support accessibility, inclusive communication, and real-world social impact.',
 		image: '/images/chula-venture-01.wqMaRW51_Zq3qWb.webp',
+		href: '/programs',
 		tone: 'bg-[var(--bg-linen)] text-black',
 	},
 	// {
@@ -155,7 +157,7 @@ export default function HomePage() {
 		<>
 			<HeroSection />
 
-			<section id="about-us" className="w-full bg-[var(--bg-linen)] py-24 md:py-32">
+			<section id="about-us" className="w-full bg-(--bg-linen) py-24 md:py-32">
 				<div className="mx-auto max-w-7xl px-6">
 					<div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
 						<div className="space-y-6">
@@ -172,7 +174,7 @@ export default function HomePage() {
 								<ul className="mt-4 space-y-3 text-lg text-black">
 									{whoWeAreBridges.map((item) => (
 										<li key={item} className="flex items-center gap-3">
-											<span className="h-2.5 w-2.5 rounded-full bg-[var(--brand-primary)]" />
+											<span className="h-2.5 w-2.5 rounded-full bg-(--brand-primary)" />
 											{item}
 										</li>
 									))}
@@ -197,11 +199,11 @@ export default function HomePage() {
 						key={area.title}
 						className={`soft-card mt-8 p-8 ${
 							index === 0
-							? 'bg-[var(--brand-stromboli)] text-white'
-							: 'bg-white text-[var(--brand-stromboli)] border border-black/10'
+							? 'bg-(--brand-stromboli) text-white'
+							: 'bg-white text-(--brand-stromboli) border border-black/10'
 						}`}
 						>
-						<div className="relative mb-8 aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-white/15">
+						<div className="relative mb-8 aspect-16/10 overflow-hidden rounded-[1.75rem] bg-white/15">
 							<Image src={area.image} alt={area.title} fill className="object-cover" />
 						</div>
 
@@ -216,7 +218,7 @@ export default function HomePage() {
 								className={`rounded-2xl px-5 py-4 backdrop-blur-sm ${
 								index === 0
 									? 'bg-white/12'
-									: 'bg-black/[0.04]'
+									: 'bg-black/4'
 								}`}
 							>
 								<p className="text-sm font-medium">{item}</p>
@@ -229,11 +231,11 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			<section id="programs" className="w-full bg-[var(--bg-linen)] py-24">
+			<section id="programs" className="w-full bg-(--bg-linen) py-24">
 				<div className="mx-auto max-w-7xl px-6">
 					<SectionHeading
 						label="Featured Programs"
-						title="Explore Our Programs"
+						title="Explore Our Programmes"
 						description="Discover hands-on AI and STEM programs designed to inspire creativity, build future-ready skills, and turn innovative ideas into real-world projects."
 					/>
 
@@ -243,19 +245,19 @@ export default function HomePage() {
 
 							return (
 								<article key={program.title} className={`soft-card h-full ${program.tone}`}>
-									<div className="relative aspect-[4/3] overflow-hidden">
+									<div className="relative aspect-4/3 overflow-hidden">
 										<Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-700 hover:scale-105" />
 									</div>
 									<div className="space-y-4 p-8">
 										<h3 className="font-serif text-2xl font-normal md:text-[2rem]">{program.title}</h3>
 										<p className={`text-base leading-relaxed ${isDark ? 'text-white/85' : 'text-black/70'}`}>{program.subtitle}</p>
 										<div className="flex items-center gap-3">
-											<Link href="/checkout" className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary)]/90'}`}>
+											<Link href="/checkout" className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-(--brand-primary) text-white hover:bg-(--brand-primary)/90'}`}>
 												Registration
 											</Link>
 
 											<Link
-												href="/programs"
+												href={program.href}
 												className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${isDark ? 'bg-transparent border border-white/30 text-white hover:bg-white/5' : 'bg-white text-black hover:bg-gray-100 border border-black/10'}`}
 											>
 												Learn More
@@ -283,9 +285,9 @@ export default function HomePage() {
 					{whyChooseUs.map((item) => (
 						<div
 						key={item.title}
-						className="group soft-card bg-[var(--bg-sage)] p-8 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl"
+						className="group soft-card bg-(--bg-sage) p-8 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl"
 						>
-						<div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--brand-primary)] text-sm font-semibold text-white">
+						<div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-(--brand-primary) text-sm font-semibold text-white">
 							{item.icon}
 						</div>
 
@@ -335,7 +337,7 @@ export default function HomePage() {
 
 					<div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 						{partners.map((partner) => (
-							<div key={partner} className="soft-card mt-8 bg-[var(--bg-sage)] px-6 py-8 text-center">
+							<div key={partner} className="soft-card mt-8 bg-(--bg-sage) px-6 py-8 text-center">
 								<p className="text-lg font-medium text-black">{partner}</p>
 							</div>
 						))}
@@ -343,22 +345,22 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			<section id="contact" className="w-full bg-[var(--brand-stromboli)] py-24 text-white">
+			<section id="contact" className="w-full bg-(--brand-stromboli) py-24 text-white">
 				<div className="mx-auto grid max-w-6xl gap-8 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
 					<div className="space-y-6">
 						<SectionLabel>Call To Action</SectionLabel>
 						<h2 className="font-serif text-4xl font-normal leading-[1.1] md:text-5xl">Join the Future of AI Innovation</h2>
 						<p className="max-w-2xl text-lg leading-relaxed text-white/85">
-							Apply now or contact us to build the next wave of generative AI, accessibility, and STEM education.
-						</p>
-					</div>
+							Enrol now or contact us to build the next wave of generative AI, accessibility, and STEM education.
+							</p>
+						</div>
 
 					<div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
-						<CTAButton href="/checkout">Apply Now</CTAButton>
-						<CTAButton href="mailto:info@sapiens-nova.com" variant="secondary">
+						<CTAButton href="/checkout">Enrol Now</CTAButton>
+						<CTAButton href="mailto:admin@xai.hk" variant="secondary">
 							Contact Us
 						</CTAButton>
-						{/* <a href="mailto:info@sapiens-nova.com?subject=Partnership%20Enquiry" className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
+						{/* <a href="mailto:admin@xai.hk?subject=Partnership%20Enquiry" className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
 							Become a Partner
 						</a> */}
 					</div>

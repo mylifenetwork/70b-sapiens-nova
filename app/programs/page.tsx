@@ -3,248 +3,354 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Programmes - Sapiens Nova Academy',
-  description: 'Explore our comprehensive programmes designed for future leaders in technology, entrepreneurship, and venture investment.',
+  title: 'HKSL Sign Language Course - Sapiens Nova Academy',
+  description:
+    'A dedicated course page for Hong Kong Sign Language learning, including curriculum, sessions, age suitability, fees, location, schedule, and learning outcomes.',
 };
 
-const trackRecords = [
+type SessionOption = {
+  id: string;
+  title: string;
+  format: string;
+  duration: string;
+  seats: string;
+  note: string;
+};
+
+type CurriculumModule = {
+  title: string;
+  summary: string;
+};
+
+type ScheduleItem = {
+  day: string;
+  topic: React.ReactNode;
+};
+
+const sessionOptions: SessionOption[] = [
   {
-    id: 'hku',
-    label: 'HKU Summer Institute',
-    heading: 'HKU Summer Institute',
-    subheading: 'Hong Kong, China',
-    description: 'Students at the HKU Summer Institute experienced state-of-the-art facilities and world-class teaching that provide the ideal setting for learning and growth. The boot camp encompassed a wide range of activities, including hands-on robotics sessions, where students got to build and programme their own robots. Mentors from ventures capital companies and investors shared their expertise and experience in investing in deep-tech startups.',
-    image: '/images/benny_ai.DTSH09PR_2Wpjt.webp',
-    btnLabel: 'Enroll in similar programme',
-    btnHref: '/checkout',
+    id: 'weekday-evening',
+    title: 'Session A (Weekday Evening)',
+    format: 'In person',
+    duration: '8 weeks, 1 class per week',
+    seats: 'Max 18 learners',
+    note: 'To be confirmed by your final content',
   },
   {
-    id: 'chula',
-    label: 'Chulalongkorn Venture Building',
-    heading: 'Chulalongkorn Venture Building & Innovation',
-    subheading: 'Bangkok, Thailand',
-    description: 'Our 15-week immersive programme at Chulalongkorn University, Bangkok offered a unique blend of academic learning and practical experience in venture building and innovation. Students worked on real-world projects with other students around the world, from AI coding, to building a robotic arm, to pitching their startup ideas to investors. This programme is designed to equip students with the skills and knowledge they need to succeed in the fast-paced world of technology and entrepreneurship.',
-    image: '/images/chula-venture-04.BjokNZOQ_2hTdub.webp',
-    btnLabel: 'Enroll in similar programme',
-    btnHref: '/checkout',
+    id: 'saturday-morning',
+    title: 'Session B (Saturday Morning)',
+    format: 'In person',
+    duration: '8 weeks, 1 class per week',
+    seats: 'Max 18 learners',
+    note: 'To be confirmed by your final content',
   },
   {
-    id: 'web3',
-    label: 'Nextg3n Web3 Hackathon KSA',
-    heading: 'Nextg3n Web3 Hackathon KSA',
-    subheading: 'Riyadh, Saudi Arabia',
-    description: 'The first international web3 hackathon focused on Gen-Z in Saudi Arabia. Over 300 student participants from 16 countries competed in a 48-hour hackathon developing web3 solutions. Sapiens Nova co-sponsored the event alongside Saudi Aramco, PWC, Polygon, Saudi Ministry of Communications, and Digital Infrastructure.',
-    image: '/images/web3-hackathon-ksa-04.B4XHduTN_2ed6vB.webp',
-    btnLabel: 'Enroll in similar programme',
-    btnHref: '/checkout',
-  },
-  {
-    id: 'bisp',
-    label: 'Tech & AI Workshop BISP',
-    heading: 'Tech & AI Workshop, British International School Phuket (BISP)',
-    subheading: 'Phuket, Thailand',
-    description: 'We ran a tech & AI workshop at the British International School Phuket campus. Students from BISP participated in hands-on AI and technology exercises, exploring cutting-edge developments in machine learning and robotics. The workshop provided an immersive experience with real-world applications of AI technology.',
-    image: '/images/tech-ai-workshop-bisp-campus-drone.Cd420VEo_2br701.webp',
-    btnLabel: 'Enroll in similar programme',
-    btnHref: '/checkout',
+    id: 'intensive-holiday',
+    title: 'Session C (Holiday Intensive)',
+    format: 'In person intensive',
+    duration: '4 full-day workshops',
+    seats: 'Max 20 learners',
+    note: 'To be confirmed by your final content',
   },
 ];
 
-const customProgrammes = [
+const curriculumModules: CurriculumModule[] = [
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12">
-        <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" /><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" /><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" /><path d="M17.599 6.5a3 3 0 0 0 .399-1.375" /><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" /><path d="M3.477 10.896a4 4 0 0 1 .585-.396" /><path d="M19.938 10.5a4 4 0 0 1 .585.396" /><path d="M6 18a4 4 0 0 1-1.967-.516" /><path d="M19.967 17.484A4 4 0 0 1 18 18" />
-      </svg>
-    ),
-    title: 'AI, Technology & Robotics',
-    description: 'Immersive programmes in artificial intelligence, machine learning, and robotics for the next generation of tech innovators.',
-    details: ['AI and Machine Learning bootcamps', 'Robotics hands-on workshops', 'Tech venture deep-dives', 'Innovation challenges'],
+    title: 'Module 1: Foundations of HKSL',
+    summary: 'Introduction to basic signs, visual grammar, and everyday interaction patterns.',
   },
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12">
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-    ),
-    title: 'Personal Growth & Well-Being',
-    description: 'Psychology-based programmes focused on emotional intelligence, resilience, and purposeful living with Cambridge-trained guidance.',
-    details: ['MBTI and personality assessments', 'Emotional resilience workshops', 'Cambridge psychology curriculum', 'Life design coaching'],
+    title: 'Module 2: Conversational Communication',
+    summary: 'Topic-based communication drills for school, home, and public settings.',
   },
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12">
-        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" /><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" /><path d="M2 7h20" /><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7" />
-      </svg>
-    ),
-    title: 'Start-up & Venture Capital',
-    description: 'Hands-on venture building experiences with real investors, pitching practice, and startup ecosystem exposure.',
-    details: ['Investor mentorship sessions', 'Startup pitch training', 'Venture capital deep-dives', 'Real startup project building'],
+    title: 'Module 3: Inclusive Technology Practice',
+    summary: 'Using AI-assisted tools and digital resources to support sign language learning.',
   },
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    title: 'Workshops & Masterclasses',
-    description: 'Focused single-day or multi-day workshops led by industry experts, covering topics from art & culture to advanced technology.',
-    details: ['Expert-led masterclasses', 'Industry immersion days', 'Cultural exchange workshops', 'School group programmes'],
+    title: 'Module 4: Final Showcase',
+    summary: 'Learners complete a practical communication task and reflection presentation.',
   },
 ];
+
+const scheduleItems: ScheduleItem[] = [
+  {
+    day: 'Day 1',
+    topic: (
+      <>
+        <span className="font-semibold text-black">How do machines learn sign language?</span>
+        <br />
+        Introduction to AI Accessibility & Data Collection
+      </>
+    ),
+  },
+  {
+    day: 'Day 2',
+    topic: (
+      <>
+        <span className="font-semibold text-black">How can AI generate human-like signing avatars?</span>
+        <br />
+        AI Avatar & GAN Modelling
+      </>
+    ),
+  },
+  {
+    day: 'Day 3',
+    topic: (
+      <>
+        <span className="font-semibold text-black">How can AI understand language differences?</span>
+        <br />
+        GenAI & LLM for HKSL Grammar Correction
+      </>
+    ),
+  },
+  {
+    day: 'Day 4',
+    topic: (
+      <>
+        <span className="font-semibold text-black">Create your own HKSL AI translator prototype.</span>
+        <br />
+        Build & Showcase Final Project
+      </>
+    ),
+  },
+];
+
+const outcomes = [
+  {
+    title: 'AI & Social Awareness',
+    description: 'Understand the social impact of AI accessibility technologies and HKSL linguistics.',
+  },
+  {
+    title: 'System Prototyping',
+    description: 'Build a functional HKSL translation pipeline and present AI solutions to real-world challenges.',
+  },
+  {
+    title: 'Technical Proficiency',
+    description: 'Master multimodal data processing, GAN-based avatar generation, and LLM-driven error correction.',
+  },
+  {
+    title: 'Team & Presentation',
+    description: 'Enhance collaborative innovation capabilities and develop highly competitive AI solutions.',
+  },
+];
+
+function SectionTag({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="inline-flex rounded-full bg-(--brand-primary) px-4 py-1">
+      <span className="text-sm font-medium uppercase tracking-wide text-white">{children}</span>
+    </div>
+  );
+}
+
+function SectionTitle({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="space-y-3">
+      <h2 className="font-serif text-3xl font-normal leading-tight text-black md:text-4xl">{title}</h2>
+      <p className="max-w-3xl text-base leading-relaxed text-black/70 md:text-lg">{description}</p>
+    </div>
+  );
+}
 
 export default function ProgramsPage() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-[var(--bg-linen)] pt-32 pb-20">
-        <div className="absolute top-8 right-8 md:top-12 md:right-16 w-32 h-32 md:w-48 md:h-48 opacity-50 pointer-events-none">
+    <main className="w-full bg-(--bg-linen) pt-28">
+      <section className="relative overflow-hidden border-b border-black/5 bg-white py-20 md:py-24">
+        <div className="absolute -right-10 -top-8 h-40 w-40 opacity-30 md:h-56 md:w-56" aria-hidden="true">
           <Image src="/images/orange.Bsxz-IXU.webp" alt="" fill className="object-contain" />
         </div>
-        <div className="container-large px-6 text-center space-y-6 relative z-10 max-w-4xl mx-auto">
-          <div className="bg-[var(--brand-primary)] px-4 py-1 rounded-full inline-block">
-            <span className="text-white text-sm font-normal uppercase tracking-wide">Innovative Education</span>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal text-black font-serif tracking-tight leading-[1.1]">
-            Unlock Your Future
-          </h1>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
-            Discover our transformative programmes designed to equip you with the skills, networks, and mindset for tomorrow&apos;s opportunities.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/checkout" className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium uppercase tracking-wide bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary)]/90 transition-colors">
-              Enrol Now
-            </Link>
-            <a href="#customised-programmes" className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium uppercase tracking-wide border border-black text-black hover:bg-black hover:text-white transition-colors">
-              Explore All
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Currently Available */}
-      <section className="w-full py-20 bg-white">
-        <div className="container-large px-6 max-w-6xl mx-auto">
-          <div className="bg-[var(--brand-primary)] px-4 py-1 rounded-full inline-block mb-4">
-            <span className="text-white text-lg font-normal">Currently Available</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-semibold font-serif mb-4">Flagship Summer Programmes</h2>
-          <p className="text-gray-600 text-lg mb-10">Enroll now in our flagship summer programmes designed for future innovators and leaders.</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Imperial */}
-            <div className="rounded-xl p-6 pb-8 shadow-lg bg-[var(--brand-stromboli)] text-white transition-transform hover:scale-[1.02]">
-              <div className="mb-6 overflow-hidden rounded-lg">
-                <Image src="/images/imperial-motor-sport1.BHIDzqxG.jpg" alt="Imperial Motorsport" width={600} height={192} className="w-full h-48 object-cover" />
-              </div>
-              <span className="uppercase font-medium text-xs px-3 py-1 rounded-full inline-block mb-3 bg-white/20 text-white">Imperial College London, UK</span>
-              <h3 className="text-2xl font-semibold font-serif mb-3">Imperial College London Motorsport Engineering Summer School</h3>
-              <div className="mb-4 rounded-lg overflow-hidden">
-                <div className="bg-white/20 px-4 py-2.5 border-l-4 border-white">
-                  <p className="text-sm font-bold">⭐⭐⭐ Official Programme by Imperial College London</p>
-                </div>
-              </div>
-              <p className="text-base mb-6 text-white/90">A practical introduction to how engineers generate, modify, and use power in the context of motorsport engineering.</p>
-              <div className="flex gap-3">
-                <a href="mailto:info@sapiens-nova.com?subject=Enquiry: Imperial Motorsport" className="inline-flex items-center justify-center text-sm font-medium rounded-full border border-white bg-white text-black hover:bg-white/90 px-4 py-2">Learn More</a>
-                <Link href="/checkout" className="inline-flex items-center justify-center text-sm font-medium rounded-full bg-[var(--brand-coral-light)] text-black hover:bg-[var(--brand-coral-light)]/90 px-4 py-2 gap-2">
-                  Enroll Now
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                </Link>
-              </div>
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div className="space-y-6">
+            <SectionTag>Programme 02</SectionTag>
+            <h1 className="font-serif text-4xl font-normal leading-[1.1] text-black md:text-5xl lg:text-6xl">
+              Building HKSL Translation Technology
+            </h1>
+            <p className="max-w-2xl text-lg leading-relaxed text-black/70">
+              This is a hands-on innovation project focused on building AI-powered Hong Kong Sign Language translation technology. Students explore how generative AI and digital humans can support accessibility, inclusive communication, and real-world social impact.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/checkout"
+                className="inline-flex items-center justify-center rounded-full border border-blue-700 bg-blue-600 px-7 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-blue-700 hover:text-white">
+                Enrol Now
+              </Link>
             </div>
+          </div>
 
-            {/* Human+Tech */}
-            <div className="rounded-xl p-6 pb-8 shadow-lg bg-[var(--brand-azure)] text-white transition-transform hover:scale-[1.02]">
-              <div className="mb-6 overflow-hidden rounded-lg">
-                <Image src="/images/human_tech1.BiYtWcrZ.jpg" alt="Human+Tech" width={600} height={192} className="w-full h-48 object-cover" />
-              </div>
-              <span className="uppercase font-medium text-xs px-3 py-1 rounded-full inline-block mb-3 bg-white/20 text-white">Awaji Island, Japan</span>
-              <h3 className="text-2xl font-semibold font-serif mb-3">Human+Tech Futures Summer Camp</h3>
-              <p className="text-base mb-6 text-white/90">Discover how technology can support healthy living. Participants explore AI, sensing and robotics technologies to create prototypes that enhance physical and emotional well-being.</p>
-              <div className="flex gap-3">
-                <a href="mailto:info@sapiens-nova.com?subject=Enquiry: Human+Tech Summer Camp" className="inline-flex items-center justify-center text-sm font-medium rounded-full border border-white bg-white text-black hover:bg-white/90 px-4 py-2">Learn More</a>
-                <Link href="/checkout" className="inline-flex items-center justify-center text-sm font-medium rounded-full bg-[var(--brand-coral-light)] text-black hover:bg-[var(--brand-coral-light)]/90 px-4 py-2 gap-2">
-                  Enroll Now
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                </Link>
+          <div className="soft-card bg-(--bg-sage) p-8">
+            <p className="text-sm uppercase tracking-wider text-black/60">Quick facts</p>
+            <div className="mt-6 space-y-4 text-sm text-black/80">
+              <p><span className="font-semibold text-black">Age:</span> 15-17 years old</p>
+              <p>
+                <span className="font-semibold text-black">Fee:</span> 6,800 HKD / Session
+              </p>
+              <p><span className="font-semibold text-black">Location:</span> Room 7, 2WCWC, 3/F, Building 2W
+No. 2 Science Park West Ave, HKSTP, Shatin, NT</p>
+              <div className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1">
+                <p className="font-semibold text-black">Start date:</p>
+                <p>Session 1: 6 July 2026 - 9 July 2026</p>
+                <div />
+                <p>Session 2: 20 July 2026 - 23 July 2026</p>
+                <div />
+                <p>Session 3: 3 August 2026 - 6 August 2026</p>
+                <div />
+                <p>Session 4: 17 August 2026 - 20 August 2026</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Customised Programmes */}
-      <section id="customised-programmes" className="w-full py-20 bg-[var(--bg-linen)]">
-        <div className="container-large px-6 max-w-6xl mx-auto">
-          <div className="bg-[var(--brand-primary)] px-4 py-1 rounded-full inline-block mb-4">
-            <span className="text-white text-lg font-normal">Customised Programmes</span>
+      {/* <section className="w-full bg-(--bg-linen) py-20" id="course-content">
+        <div className="mx-auto max-w-7xl space-y-10 px-6">
+          <SectionTag>Course Content</SectionTag>
+          <SectionTitle
+            title="What Students Will Learn"
+            description="A clear learning pathway from foundational signs to practical communication, designed for real-world use and inclusive interaction."
+          />
+
+          <div className="grid gap-6 md:grid-cols-[60%_40%]">
+            {curriculumModules.map((module) => (
+              <article key={module.title} className="soft-card bg-white p-7">
+                <h3 className="font-serif text-2xl font-normal text-black">{module.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-black/70">{module.summary}</p>
+              </article>
+            ))}
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold font-serif mb-4">Tailored for Your Institution</h2>
-          <p className="text-gray-600 text-lg mb-10">We work with schools, universities, and organizations to create bespoke programmes that meet your specific needs.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {customProgrammes.map((prog) => (
-              <div key={prog.title} className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-[var(--brand-primary)] mb-4">{prog.icon}</div>
-                <h3 className="text-xl font-semibold font-serif mb-2">{prog.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{prog.description}</p>
-                <ul className="space-y-1 mb-6">
-                  {prog.details.map((d) => (
-                    <li key={d} className="flex items-center gap-2 text-sm text-gray-700">
-                      <svg className="w-4 h-4 text-[var(--brand-primary)] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-                <a href={`mailto:info@sapiens-nova.com?subject=Enquiry: ${prog.title} programme`} className="inline-flex items-center gap-2 text-sm font-medium text-[var(--brand-primary)] hover:underline">
-                  Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                </a>
+        </div>
+      </section> */}
+
+      {/* <section className="w-full bg-white py-20" id="session-selection">
+        <div className="mx-auto max-w-7xl space-y-10 px-6">
+          <SectionTag>Session Selection</SectionTag>
+          <SectionTitle
+            title="Choose Your Session"
+            description="You can provide final session names, times, capacity, and format, and I will replace these placeholders with your exact version."
+          />
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {sessionOptions.map((session) => (
+              <article key={session.id} className="soft-card bg-(--bg-sage) p-7">
+                <h3 className="font-serif text-2xl font-normal text-black">{session.title}</h3>
+                <div className="mt-4 space-y-2 text-sm leading-relaxed text-black/75">
+                  <p><span className="font-semibold text-black">Format:</span> {session.format}</p>
+                  <p><span className="font-semibold text-black">Duration:</span> {session.duration}</p>
+                  <p><span className="font-semibold text-black">Capacity:</span> {session.seats}</p>
+                </div>
+                <p className="mt-5 text-sm text-black/60">{session.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-(--bg-linen) py-20" id="age-fee-location">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-3">
+          <article className="soft-card bg-white p-7">
+            <SectionTag>Age</SectionTag>
+            <h3 className="mt-4 font-serif text-2xl font-normal text-black">Suitable Age</h3>
+            <p className="mt-3 text-base leading-relaxed text-black/70">Please provide your target age range and prerequisites, and I will update this block precisely.</p>
+          </article>
+
+          <article className="soft-card bg-white p-7">
+            <SectionTag>Fee</SectionTag>
+            <h3 className="mt-4 font-serif text-2xl font-normal text-black">Course Fee</h3>
+            <p className="mt-3 text-base leading-relaxed text-black/70">Please provide fee details, discount policy, and payment schedule.</p>
+          </article>
+
+          <article className="soft-card bg-white p-7">
+            <SectionTag>Location</SectionTag>
+            <h3 className="mt-4 font-serif text-2xl font-normal text-black">Course Location</h3>
+            <p className="mt-3 text-base leading-relaxed text-black/70">Please provide venue details, city, classroom mode, and access instructions if needed.</p>
+          </article>
+        </div>
+      </section> */}
+
+      <section className="w-full bg-(--bg-linen) py-20" id="course-schedule">
+        <div className="mx-auto max-w-7xl space-y-10 px-6">
+          <SectionTag>Course Schedule</SectionTag>
+          <SectionTitle
+            title="Learning Timeline"
+            description="A simple day-by-day plan with lessons, hands-on practice and final showcase time."
+          />
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white">
+              {scheduleItems.map((item) => (
+                <div key={item.day} className="grid gap-1 border-b border-black/10 px-6 py-5 md:grid-cols-[120px_1fr] md:items-center last:border-b-0">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-(--brand-primary)">{item.day}</p>
+                  <p className="text-base leading-relaxed text-black/80">{item.topic}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white p-6">
+              <SectionTag>Daily Agenda</SectionTag>
+              <div className="mt-6 space-y-4 text-sm text-black/80">
+                <div className="grid grid-cols-[120px_1fr] gap-2">
+                  <p className="font-semibold">10:00 – 12:30</p>
+                  <p>Morning Lecture + Guided Demonstration</p>
+                </div>
+                <div className="grid grid-cols-[120px_1fr] gap-2">
+                  <p className="font-semibold">12:30 – 13:30</p>
+                  <p>Lunch Break</p>
+                </div>
+                <div className="grid grid-cols-[120px_1fr] gap-2">
+                  <p className="font-semibold">13:30 – 16:30</p>
+                  <p>Hands-on Workshop + Team Activities</p>
+                </div>
+                <div className="grid grid-cols-[120px_1fr] gap-2">
+                  <p className="font-semibold">16:30 – 17:00</p>
+                  <p>Reflection / Sharing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+ 
+
+      <section className="w-full bg-white py-20" id="learning-outcomes">
+        <div className="mx-auto max-w-7xl space-y-10 px-6">
+          <SectionTag>Learning Outcomes</SectionTag>
+          <SectionTitle
+            title="What Learners Achieve"
+            description="Gain ethical awareness and hands-on skills to prototype HKSL translation systems using multimodal data, GAN avatars, and LLM-driven correction for real-world impact."
+          />
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {outcomes.map((item) => (
+              <div key={item.title} className="soft-card flex items-start gap-3 bg-white p-6">
+                <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-(--brand-primary) text-xs text-white">
+                  ✓
+                </span>
+                <div>
+                  <h4 className="font-semibold text-black">{item.title}</h4>
+                  <p className="text-base leading-relaxed text-black/80">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Proven Excellence / Track Record */}
-      <section className="w-full py-20 bg-white">
-        <div className="container-large px-6 max-w-6xl mx-auto">
-          <div className="bg-[var(--brand-primary-light)] px-4 py-1 rounded-full inline-block mb-4">
-            <span className="text-black text-lg font-normal">Proven Excellence</span>
+      <section className="w-full bg-(--brand-stromboli) py-20 text-white">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="space-y-4">
+            <h2 className="font-serif text-4xl font-normal leading-tight md:text-5xl">Ready to join the summer programme?</h2>
+            <p className="max-w-2xl text-lg leading-relaxed text-white/85">
+              Enrol now to secure a place in this programme and start building practical skills through guided innovation.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold font-serif mb-4">Our Track Record</h2>
-          <p className="text-gray-600 text-lg mb-10">See what we&apos;ve achieved with students around the world in our previous programmes.</p>
-          <div className="space-y-16">
-            {trackRecords.map((rec, i) => (
-              <div key={rec.id} className={`flex flex-col ${i % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-10 items-center`}>
-                <div className="w-full md:w-1/2 rounded-xl overflow-hidden shadow-lg aspect-video">
-                  <Image src={rec.image} alt={rec.heading} width={600} height={340} className="w-full h-full object-cover" />
-                </div>
-                <div className="w-full md:w-1/2 space-y-4">
-                  <h3 className="text-2xl md:text-3xl font-semibold font-serif">{rec.heading}</h3>
-                  <p className="text-[var(--brand-primary)] font-medium text-sm uppercase tracking-wide">{rec.subheading}</p>
-                  <p className="text-gray-700 leading-relaxed">{rec.description}</p>
-                  <Link href={rec.btnHref} className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary)]/90 transition-colors">
-                    {rec.btnLabel}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="w-full py-20 bg-[var(--brand-stromboli)] text-white text-center">
-        <div className="container-large px-6 max-w-2xl mx-auto space-y-6">
-          <h2 className="text-4xl md:text-5xl font-normal font-serif">Ready to Begin?</h2>
-          <p className="text-white/80 text-lg">Join hundreds of students who have transformed their futures through Sapiens Nova Academy programmes.</p>
-          <Link href="/checkout" className="inline-flex items-center justify-center rounded-full px-10 py-4 text-base font-medium uppercase tracking-wide bg-[var(--brand-coral-light)] text-black hover:bg-[var(--brand-coral-light)]/90 transition-colors">
+          <Link
+            href="/checkout"
+            className="inline-flex items-center justify-center rounded-full bg-(--brand-coral-light) px-10 py-4 text-sm font-semibold uppercase tracking-wide text-black transition-colors hover:bg-(--brand-coral-light)/90"
+          >
             Enrol Now
           </Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }

@@ -9,8 +9,8 @@ import { buildEnrollmentMailBody, toEnrollmentSubmission } from './submission';
 // or declared here for static metadata purposes (works with Next.js App Router for non-dynamic data)
 
 const PROGRAMMES = [
-  { value: 'imperial-motorsport', label: 'Imperial College London Motorsport Engineering Summer School', price: 'Contact for pricing' },
-  { value: 'human-tech-summer-camp', label: 'Human+Tech Futures Summer Camp', price: 'Contact for pricing' },
+  { value: 'hksl-translation', label: 'Building HKSL Translation Technology', price: '6,800 HKD / Session' },
+  { value: 'private-ai-copilots', label: 'Building Private AI Copilots', price: '6,800 HKD / Session' },
 ];
 
 type FormData = {
@@ -238,7 +238,7 @@ export default function CheckoutPage() {
                   ]}
                 />
                 <div className="sm:col-span-2">
-                  <InputField id="contactPhone" label="Phone Number (Optional)" type="tel" value={formData.contactPhone} onChange={handleChange} required={false} placeholder="+852 1234 5678" />
+                  <InputField id="contactPhone" label="Phone Number" type="tel" value={formData.contactPhone} onChange={handleChange} required={true} placeholder="+852 1234 5678" />
                 </div>
               </div>
             </div>
@@ -258,7 +258,7 @@ export default function CheckoutPage() {
                 <p>{submitError}</p>
                 <a
                   className="mt-2 inline-block underline"
-                  href={`mailto:info@sapiens-nova.com?subject=${encodeURIComponent('Enrolment Application: ' + (selectedProg?.label || formData.programme))}&body=${encodeURIComponent(buildEnrollmentMailBody(toEnrollmentSubmission(formData)))}`}
+                  href={`mailto:admin@xai.hk?subject=${encodeURIComponent('Enrolment Application: ' + (selectedProg?.label || formData.programme))}&body=${encodeURIComponent(buildEnrollmentMailBody(toEnrollmentSubmission(formData)))}`}
                 >
                   Use email fallback
                 </a>
@@ -289,12 +289,12 @@ export default function CheckoutPage() {
               )}
 
               <div className="border-t pt-4 space-y-3">
-                <h3 className="text-sm font-semibold text-black">Why Sapiens Nova?</h3>
+                <h3 className="text-sm font-semibold text-black">Why choose us?</h3>
                 {[
-                  'World-class faculty from Imperial College & Cambridge',
-                  'International student cohort',
-                  'Hands-on, project-based learning',
-                  'Investor & industry mentorship',
+                  'Preparing Students for the Future of AI',
+                  'Real-world AI technologies',
+                  'Hands-on project learning',
+                  'Innovation and entrepreneurship mindset',
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-[var(--brand-primary)] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -307,8 +307,8 @@ export default function CheckoutPage() {
 
               <div className="bg-[var(--bg-linen)] rounded-xl p-4 text-center space-y-2">
                 <p className="text-xs text-gray-600">Questions? Contact us directly:</p>
-                <a href="mailto:info@sapiens-nova.com" className="text-sm font-medium text-[var(--brand-primary)] hover:underline block">
-                  info@sapiens-nova.com
+                <a href="mailto:admin@xai.hk" className="text-sm font-medium text-[var(--brand-primary)] hover:underline block">
+                  admin@xai.hk
                 </a>
               </div>
             </div>

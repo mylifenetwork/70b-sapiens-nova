@@ -41,7 +41,7 @@ export default function Footer() {
               {[
                 { href: '/#about-us', label: 'WHO WE ARE' },
                 { href: '/programs', label: 'PROGRAMMES' },
-                { href: 'https://docs.google.com/forms/d/e/1FAIpQLSdtPrl4dJX4z_LP_XDTwL0C7ct68QhWGH6eMXMzHIsRd-4rsQ/viewform?usp=header', label: 'ENROLL NOW' },
+                { href: '/checkout', label: 'ENROLL NOW' },
                 // { href: '/data-privacy-terms', label: 'DATA PRIVACY TERMS' },
                 // { href: '/#footer', label: 'CONTACT' },
               ].map(({ href, label }) => (
@@ -59,13 +59,13 @@ export default function Footer() {
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-black">Email</p>
                 <a href="mailto:info@sapiens-nova.com" className="text-gray-700 hover:text-black transition-colors text-sm md:text-base block">
-                  info@sapiens-nova.com
+                  admin@xai.hk
                 </a>
               </div>
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-black">Website</p>
-                <a href="https://sapiens-nova.com/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-colors text-sm md:text-base block">
-                  sapiens-nova.com
+                <a href="https://www.mln.hk" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-colors text-sm md:text-base block">
+                  https://www.mln.hk
                 </a>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-gray-300">
-          <p className="text-sm text-gray-600 font-sans">© 2026 Sapiens Nova. All rights reserved.</p>
+          <p className="text-sm text-gray-600 font-sans">© 2026 70b. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/data-privacy-terms" className="text-sm text-gray-600 hover:text-black transition-colors">Privacy Policy</Link>
             <Link href="/#footer" className="text-sm text-gray-600 hover:text-black transition-colors">Terms of Service</Link>
