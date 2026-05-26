@@ -5,13 +5,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Sapiens Nova Academy - Embrace Your Future: Innovate, Heal, Inspire',
+  title: '70b - Building the Future  with Generative AI',
   description:
     'A dynamic educational institution preparing young adults for careers as venture capitalists, entrepreneurs, and technology professionals through innovative programmes in Hong Kong, Thailand, Japan, China, UK, and Saudi Arabia.',
   openGraph: {
     type: 'website',
-    siteName: 'Sapiens Nova Academy',
-    title: 'Sapiens Nova Academy - Embrace Your Future: Innovate, Heal, Inspire',
+    siteName: '70b - Building the Future with Generative AI',
+    title: '70b - Building the Future with Generative AI',
     description:
       'A dynamic educational institution preparing young adults for careers as venture capitalists, entrepreneurs, and technology professionals.',
   },

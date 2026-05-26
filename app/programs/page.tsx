@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'HKSL Sign Language Course - Sapiens Nova Academy',
+  title: 'HKSL Sign Language Course - 70b',
   description:
     'A dedicated course page for Hong Kong Sign Language learning, including curriculum, sessions, age suitability, fees, location, schedule, and learning outcomes.',
 };

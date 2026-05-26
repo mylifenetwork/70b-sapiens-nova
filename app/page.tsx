@@ -5,9 +5,9 @@ import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
 
 export const metadata: Metadata = {
-	title: 'Sapiens Nova Academy | Building the Future with Generative AI',
+	title: '70b | Building the Future with Generative AI',
 	description:
-		'Sapiens Nova Academy builds programs in generative AI, accessibility technology, STEM education, digital humans, and enterprise AI solutions.',
+		'70b builds programs in generative AI, accessibility technology, STEM education, digital humans, and enterprise AI solutions.',
 };
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -47,7 +47,7 @@ const whoWeAreBridges = ['AI research', 'Education', 'Enterprise applications', 
 const focusAreas = [
 	{
 		title: 'Generative AI Solutions',
-		image: '/images/advanced-research.webp',
+		image: '/images/copilot.png',
 		items: ['AI assistants', 'Enterprise LLMs', 'Workflow automation', 'On-premise AI systems'],
 	},
 	{
@@ -61,41 +61,17 @@ const featuredPrograms = [
 	{
 		title: 'Private AI Copilots',
 		subtitle: 'An intensive module on GenAI systems, secure AI engineering and enterprise applications, guiding learners through design, governance and on‑premise deployment of private, resilient AI solutions.',
-		image: '/images/imperial-motor-sport1.BHIDzqxG.jpg',
+		image: '/images/copilot.png',
 		href: '/programs/stem-ai-summer-school',
 		tone: 'bg-[var(--brand-stromboli)] text-white',
 	},
 	{
 		title: 'HKSL Translation Technology',
 		subtitle: 'A hands-on innovation project focused on building AI-powered Hong Kong Sign Language translation technology. Students explore how generative AI and digital humans can support accessibility, inclusive communication, and real-world social impact.',
-		image: '/images/chula-venture-01.wqMaRW51_Zq3qWb.webp',
+		image: '/images/hksl.jpg',
 		href: '/programs',
 		tone: 'bg-[var(--bg-linen)] text-black',
 	},
-	// {
-	// 	title: 'AI Avatar Studio',
-	// 	subtitle: 'Digital human creation, motion AI, and presentation media',
-	// 	image: '/images/human_tech1.BiYtWcrZ.jpg',
-	// 	tone: 'bg-[var(--brand-azure)] text-white',
-	// },
-	// {
-	// 	title: 'AI Innovation Challenge',
-	// 	subtitle: 'Team-based AI product development and pitching',
-	// 	image: '/images/chula-venture-final-pitch.VMFUh09m_Z2iJlNa.webp',
-	// 	tone: 'bg-[var(--brand-coral)] text-white',
-	// },
-	// {
-	// 	title: 'Camps & Workshops',
-	// 	subtitle: 'Hands-on sessions for schools, universities, and partners',
-	// 	image: '/images/chula-venture-team-5.BOG_x4Gi_ZyNNKm.webp',
-	// 	tone: 'bg-white text-black',
-	// },
-	// {
-	// 	title: 'Outreach Projects',
-	// 	subtitle: 'Community-facing innovation with social impact',
-	// 	image: '/images/tech-ai-workshop-bisp-campus-drone.Cd420VEo_2br701.webp',
-	// 	tone: 'bg-[var(--bg-sage)] text-black',
-	// },
 ];
 
 const whyChooseUs = [
@@ -150,7 +126,30 @@ const showcaseItems = [
 	},
 ];
 
-const partners = ['Schools', 'Universities', 'NGOs', 'Technology companies'];
+const partnerGroups = [
+	{
+		category: 'Clients',
+		logos: [
+			{ title: 'HSBC', image: '/images/HSBC_logo_(2018).svg.png', alt: 'HSBC logo' },
+			{ title: 'Standard Chartered', image: '/images/standard_logo.png', alt: 'Standard Chartered logo' },
+		],
+	},
+	{
+		category: 'Universities',
+		logos: [{ title: 'CU', image: '/images/Emblem_of_CU.png', alt: 'CU emblem' }],
+	},
+	{
+		category: 'NGOs',
+		logos: [{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo' }],
+	},
+	{
+		category: 'Technology companies',
+		logos: [
+			{ title: 'Glassbox', image: '/images/glassbox_logo.png', alt: 'Glassbox logo' },
+			{ title: 'Impact', image: '/images/impact_logo.jpg', alt: 'Impact logo' },
+		],
+	},
+];
 
 export default function HomePage() {
 	return (
@@ -203,9 +202,9 @@ export default function HomePage() {
 							: 'bg-white text-(--brand-stromboli) border border-black/10'
 						}`}
 						>
-						<div className="relative mb-8 aspect-16/10 overflow-hidden rounded-[1.75rem] bg-white/15">
+						{/* <div className="relative mb-8 aspect-16/10 overflow-hidden rounded-[1.75rem] bg-white/15">
 							<Image src={area.image} alt={area.title} fill className="object-cover" />
-						</div>
+						</div> */}
 
 						<h3 className="font-serif text-3xl font-normal md:text-4xl">
 							{area.title}
@@ -327,18 +326,27 @@ export default function HomePage() {
 				</div>
 			</section> */}
 
-			<section id="partners" className="w-full bg-white py-24">
+			<section id="partners" className="w-full bg-(--bg-linen) py-24">
 				<div className="mx-auto max-w-7xl px-6">
 					<SectionHeading
 						label="Partners"
 						title="Partners & Collaborators"
-						description="Potential future partners include schools, universities, NGOs, and technology companies."
+						description="Our partners include schools, universities, NGOs, and technology companies."
 					/>
 
 					<div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-						{partners.map((partner) => (
-							<div key={partner} className="soft-card mt-8 bg-(--bg-sage) px-6 py-8 text-center">
-								<p className="text-lg font-medium text-black">{partner}</p>
+						{partnerGroups.map((group) => (
+							<div key={group.category} className="soft-card mt-8 bg-(--bg-sage) p-6">
+								<p className="text-sm uppercase tracking-widest text-black/50">{group.category}</p>
+								<div className="mt-5 grid gap-4">
+									{group.logos.map((logo) => (
+										<div key={logo.title} className="flex min-h-28 items-center justify-center rounded-2xl bg-white px-5 py-5">
+											<div className="relative h-16 w-full max-w-45">
+												<Image src={logo.image} alt={logo.alt} fill className="object-contain" />
+											</div>
+										</div>
+									))}
+								</div>
 							</div>
 						))}
 					</div>
@@ -360,9 +368,6 @@ export default function HomePage() {
 						<CTAButton href="mailto:admin@xai.hk" variant="secondary">
 							Contact Us
 						</CTAButton>
-						{/* <a href="mailto:admin@xai.hk?subject=Partnership%20Enquiry" className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
-							Become a Partner
-						</a> */}
 					</div>
 				</div>
 			</section>

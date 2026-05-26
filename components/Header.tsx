@@ -47,7 +47,7 @@ export default function Header() {
           {/* Mobile Layout */}
           <div className="flex md:hidden justify-between items-center">
             <Link href="/" className="shrink-0">
-              <Image src="/images/logo.png" alt="Sapiens Nova Logo" width={120} height={40} className="h-10 w-auto object-contain mix-blend-multiply" />
+              <Image src="/images/logo.png" alt="70b Logo" width={120} height={40} className="h-10 w-auto object-contain mix-blend-multiply" />
             </Link>
             <button id="mobile-menu-btn" className="flex items-center justify-center text-black p-0 h-auto" aria-label="Open menu">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,7 +67,7 @@ export default function Header() {
             {/* Centered Logo */}
             <div className="flex justify-center">
               <Link href="/" className="shrink-0">
-                <Image src="/images/logo.png" alt="Sapiens Nova Logo" width={144} height={48} className="h-12 w-auto object-contain mix-blend-multiply" />
+                <Image src="/images/logo.png" alt="70b Logo" width={144} height={48} className="h-12 w-auto object-contain mix-blend-multiply" />
               </Link>
             </div>
             {/* Right Navigation */}
