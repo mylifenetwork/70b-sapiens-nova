@@ -147,7 +147,8 @@ export default function STEMAISummerSchoolPage() {
             <div className="mt-6 space-y-4 text-sm text-black/80">
               <p><span className="font-semibold text-black">Age:</span> 15-17 years old</p>
               <p>
-                <span className="font-semibold text-black">Fee:</span> 6,800 HKD / Session
+                <span className="font-semibold text-black">Fee:</span> 7,800 HKD / Session
+                <span className="ml-2 text-red-500">(Early bird discount: 15% off if enrolled before 30 June 2026)</span>
               </p>
               <p><span className="font-semibold text-black">Location:</span> Room 7, 2WCWC, 3/F, Building 2W
 No. 2 Science Park West Ave, HKSTP, Shatin, NT</p>

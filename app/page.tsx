@@ -126,27 +126,39 @@ const showcaseItems = [
 	},
 ];
 
-const partnerGroups = [
+type PartnerLogo = {
+	title: string;
+	image: string;
+	alt: string;
+	href?: string;
+};
+
+type PartnerGroup = {
+	category: string;
+	logos: PartnerLogo[];
+};
+
+const partnerGroups: PartnerGroup[] = [
 	{
 		category: 'Clients',
 		logos: [
-			{ title: 'HSBC', image: '/images/HSBC_logo_(2018).svg.png', alt: 'HSBC logo' },
-			{ title: 'Standard Chartered', image: '/images/standard_logo.png', alt: 'Standard Chartered logo' },
+			{ title: 'HSBC', image: '/images/HSBC_logo_(2018).svg.png', alt: 'HSBC logo',href: 'https://www.hsbc.com.hk/zh-hk/' },
+			{ title: 'Standard Chartered', image: '/images/standard_logo.png', alt: 'Standard Chartered logo', href: 'https://www.sc.com/hk/zh/' },
 		],
 	},
 	{
 		category: 'Universities',
-		logos: [{ title: 'CU', image: '/images/Emblem_of_CU.png', alt: 'CU emblem' }],
+		logos: [{ title: 'HKU', image: '/images/HKU.png', alt: 'HKU emblem', href: 'https://www.hku.hk/' }],
 	},
 	{
 		category: 'NGOs',
-		logos: [{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo' }],
+		logos: [{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo', href: 'https://www.silence.org.hk' }],
 	},
 	{
 		category: 'Technology companies',
 		logos: [
-			{ title: 'Glassbox', image: '/images/glassbox_logo.png', alt: 'Glassbox logo' },
-			{ title: 'Impact', image: '/images/impact_logo.jpg', alt: 'Impact logo' },
+			{ title: 'Glassbox', image: '/images/glassbox_logo.png', alt: 'Glassbox logo', href: 'https://www.xai.hk' },
+			{ title: 'Impact', image: '/images/impact_logo.jpg', alt: 'Impact logo', href: 'https://www.70b.ai' },
 		],
 	},
 ];
@@ -341,9 +353,15 @@ export default function HomePage() {
 								<div className="mt-5 grid gap-4">
 									{group.logos.map((logo) => (
 										<div key={logo.title} className="flex min-h-28 items-center justify-center rounded-2xl bg-white px-5 py-5">
-											<div className="relative h-16 w-full max-w-45">
-												<Image src={logo.image} alt={logo.alt} fill className="object-contain" />
-											</div>
+											{logo.href ? (
+												<a href={logo.href} target="_blank" rel="noreferrer" className="relative block h-16 w-full max-w-45 transition-opacity hover:opacity-80">
+													<Image src={logo.image} alt={logo.alt} fill className="object-contain" />
+												</a>
+											) : (
+												<div className="relative h-16 w-full max-w-45">
+													<Image src={logo.image} alt={logo.alt} fill className="object-contain" />
+												</div>
+											)}
 										</div>
 									))}
 								</div>

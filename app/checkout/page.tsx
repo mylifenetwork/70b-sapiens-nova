@@ -9,8 +9,8 @@ import { buildEnrollmentMailBody, toEnrollmentSubmission } from './submission';
 // or declared here for static metadata purposes (works with Next.js App Router for non-dynamic data)
 
 const PROGRAMMES = [
-  { value: 'hksl-translation', label: 'Building HKSL Translation Technology', price: '6,800 HKD / Session' },
-  { value: 'private-ai-copilots', label: 'Building Private AI Copilots', price: '6,800 HKD / Session' },
+  { value: 'hksl-translation', label: 'Building HKSL Translation Technology', price: '7,800 HKD / Session' },
+  { value: 'private-ai-copilots', label: 'Building Private AI Copilots', price: '7,800 HKD / Session' },
 ];
 
 type FormData = {

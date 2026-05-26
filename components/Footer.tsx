@@ -44,8 +44,8 @@ export default function Footer() {
               </div>
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-black">Website</p>
-                <a href="https://www.mln.hk" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-colors text-sm md:text-base block">
-                  https://www.mln.hk
+                <a href="https://www.70b.ai" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-black transition-colors text-sm md:text-base block">
+                  https://www.70b.ai
                 </a>
               </div>
             </div>
