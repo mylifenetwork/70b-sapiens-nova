@@ -22,6 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/images/pic_16px.ico" sizes="16x16" />
+        <link rel="icon" href="/images/pic_32px.ico" sizes="32x32" />
+        <link rel="icon" href="/images/pic_48px.ico" sizes="48x48" />
+        <link rel="shortcut icon" href="/images/pic_32px.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
