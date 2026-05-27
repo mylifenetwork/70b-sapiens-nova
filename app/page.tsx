@@ -154,14 +154,14 @@ const partnerGroups: PartnerGroup[] = [
 		category: 'NGOs',
 		logos: [
 			{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo', href: 'https://www.silence.org.hk' },
-			{ title: 'SLCO', image: '/images/slco_logo.png', alt: 'SLCO logo', href: 'https://slco.org.hk' },
+			{ title: 'SLCO', image: '/images/slco_logo.jpg', alt: 'SLCO logo', href: 'https://slco.org.hk' },
 		],
 	},
 	{
 		category: 'Technology companies',
 		logos: [
 			{ title: 'Glassbox', image: '/images/glassbox_logo.png', alt: 'Glassbox logo', href: 'https://www.xai.hk' },
-			{ title: 'Impact', image: '/images/impact_logo.jpg', alt: 'Impact logo', href: 'https://www.70b.ai' },
+			{ title: 'Impact', image: '/images/impact_logo.jpg', alt: 'Impact logo', href: 'https://impactai.hk' },
 		],
 	},
 ];

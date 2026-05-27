@@ -145,7 +145,8 @@ export default function STEMAISummerSchoolPage() {
           <div className="soft-card bg-(--bg-sage) p-8">
             <p className="text-sm uppercase tracking-wider text-black/60">Quick facts</p>
             <div className="mt-6 space-y-4 text-sm text-black/80">
-              <p><span className="font-semibold text-black">Age:</span> 15-17 years old</p>
+              <p><span className="font-semibold text-black">Age:</span> 15-18 years old</p>
+              <p><span className="font-semibold text-black">Language:</span> English</p>
               <p>
                 <span className="font-semibold text-black">Fee:</span> 7,800 HKD / Session
                 <span className="ml-2 text-red-500">(Early bird discount: 15% off if enrolled before 30 June 2026)</span>
@@ -160,7 +161,7 @@ No. 2 Science Park West Ave, HKSTP, Shatin, NT</p>
                 <div />
                 <p>Session 3: 10 August 2026 - 13 August 2026</p>
                 <div />
-                <p>Session 4: 17 August 2026 - 20 August 2026</p>
+                <p>Session 4: 24 August 2026 - 27 August 2026</p>
               </div>
             </div>
           </div>
