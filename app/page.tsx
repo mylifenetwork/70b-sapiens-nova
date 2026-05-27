@@ -152,7 +152,10 @@ const partnerGroups: PartnerGroup[] = [
 	},
 	{
 		category: 'NGOs',
-		logos: [{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo', href: 'https://www.silence.org.hk' }],
+		logos: [
+			{ title: 'Silence', image: '/images/silence_logo.jpeg', alt: 'Silence logo', href: 'https://www.silence.org.hk' },
+			{ title: 'SLCO', image: '/images/slco_logo.png', alt: 'SLCO logo', href: 'https://slco.org.hk' },
+		],
 	},
 	{
 		category: 'Technology companies',
