@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const heroImages = [
-  { src: '/images/chula-venture-01.wqMaRW51_Zq3qWb.webp', style: { objectPosition: 'center top' }, loading: 'eager' as const, kenBurns: true },
-  { src: '/images/chula-venture-final-pitch.VMFUh09m_Z2iJlNa.webp', style: { objectPosition: '65% top' }, loading: 'lazy' as const, kenBurns: false },
-  { src: '/images/chula-venture-team-5.BOG_x4Gi_ZyNNKm.webp', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
-  { src: '/images/web3-hackathon-ksa-04.B4XHduTN_2ed6vB.webp', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/1710745047330.jpeg', style: { objectPosition: '65% top' }, loading: 'eager' as const, kenBurns: true },
+  { src: '/images/1749016530338.gif', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/digital_submit.jpeg', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/hsbc_acessibility.jpeg', style: { objectPosition: '65% top' }, loading: 'lazy' as const, kenBurns: false },
 ];
 
 export default function HeroSection() {
