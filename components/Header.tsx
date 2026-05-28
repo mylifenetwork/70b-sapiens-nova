@@ -94,7 +94,7 @@ export default function Header() {
             {[
               { href: '/#who-we-are', label: 'WHO WE ARE' },
               { href: '/programs', label: 'PROGRAMMES' },
-              { href: '/checkout', label: 'ENROL NOW' },
+              { href: 'https://forms.gle/6yW1xD332eF8aMiR7', label: 'ENROL NOW' },
               { href: '/#footer', label: 'GET IN TOUCH' },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="mobile-nav-link flex items-center justify-between px-6 py-5 text-base font-medium uppercase tracking-wider text-foreground hover:bg-muted transition-colors border-b border-border">

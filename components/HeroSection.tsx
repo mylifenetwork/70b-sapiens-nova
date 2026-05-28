@@ -40,8 +40,8 @@ export default function HeroSection() {
             <Image src={img.src} alt="" fill loading={img.loading} style={{ objectFit: 'cover', ...img.style }} className={`w-full h-full object-cover md:object-cover${img.kenBurns ? ' animate-ken-burns' : ''}`} />
           </div>
         ))}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/80 via-black/60 md:from-black/75 md:via-black/45 to-black/30 md:to-black/20" />
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-transparent to-black/60 md:from-black/30 md:to-black/50" />
+        <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-black/80 via-black/60 md:from-black/75 md:via-black/45 to-black/30 md:to-black/20" />
+        <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-black/40 via-transparent to-black/60 md:from-black/30 md:to-black/50" />
       </div>
 
       {/* Content */}
@@ -53,9 +53,9 @@ export default function HeroSection() {
           We empower the next generation through AI innovation, STEM education, digital humans, accessibility technology, and enterprise AI solutions.
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center md:justify-start items-center mt-8 md:mt-10">
-          <Link href="/checkout" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary-light)', color: 'var(--text-primary)' }}>
+          <a href="https://forms.gle/6yW1xD332eF8aMiR7" target="_blank" rel="noreferrer" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary-light)', color: 'var(--text-primary)' }}>
             ENROL NOW
-          </Link>
+          </a>
           <Link href="/#programs" className="hero-cta inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-[30px] font-medium text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:opacity-90 hover:scale-105 h-auto" style={{ backgroundColor: 'var(--brand-primary)', color: 'var(--primary-foreground)' }}>
             EXPLORE PROGRAMMES
           </Link>

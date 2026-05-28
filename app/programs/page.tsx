@@ -169,11 +169,13 @@ export default function ProgramsPage() {
               This is a hands-on innovation project focused on building AI-powered Hong Kong Sign Language translation technology. Students explore how generative AI and digital humans can support accessibility, inclusive communication, and real-world social impact.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/checkout"
+              <a
+                href="https://forms.gle/6yW1xD332eF8aMiR7"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-blue-700 bg-blue-600 px-7 py-3 text-sm font-medium uppercase tracking-wide text-white transition-colors hover:bg-blue-700 hover:text-white">
                 Enrol Now
-              </Link>
+              </a>
               <a
                 href="/pdfs/hksl-course-flyer.pdf"
                 download
@@ -341,6 +343,16 @@ No. 2 Science Park West Ave, HKSTP, Shatin, NT</p>
                 </div>
               </div>
             ))}
+
+            <div className="soft-card flex items-start gap-3 bg-white p-6 md:col-span-2">
+              <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-(--brand-primary) text-xs text-white">
+                ✓
+              </span>
+              <div>
+                <h4 className="font-semibold text-black">Certificate & Recommendation</h4>
+                <p className="text-base leading-relaxed text-black/80">Students receive a company-issued course completion certificate and a personalised recommendation letter.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -353,12 +365,14 @@ No. 2 Science Park West Ave, HKSTP, Shatin, NT</p>
               Enrol now to secure a place in this programme and start building practical skills through guided innovation.
             </p>
           </div>
-          <Link
-            href="/checkout"
+          <a
+            href="https://forms.gle/6yW1xD332eF8aMiR7"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center justify-center rounded-full bg-(--brand-coral-light) px-10 py-4 text-sm font-semibold uppercase tracking-wide text-black transition-colors hover:bg-(--brand-coral-light)/90"
           >
             Enrol Now
-          </Link>
+          </a>
         </div>
       </section>
     </main>

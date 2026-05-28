@@ -269,9 +269,9 @@ export default function HomePage() {
 										<h3 className="font-serif text-2xl font-normal md:text-[2rem]">{program.title}</h3>
 										<p className={`text-base leading-relaxed ${isDark ? 'text-white/85' : 'text-black/70'}`}>{program.subtitle}</p>
 										<div className="flex items-center gap-3">
-											<Link href="/checkout" className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-(--brand-primary) text-white hover:bg-(--brand-primary)/90'}`}>
+											<a href="https://forms.gle/6yW1xD332eF8aMiR7" target="_blank" rel="noreferrer" className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors ${isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-(--brand-primary) text-white hover:bg-(--brand-primary)/90'}`}>
 												Registration
-											</Link>
+											</a>
 
 											<Link
 												href={program.href}
@@ -388,7 +388,9 @@ export default function HomePage() {
 						</div>
 
 					<div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
-						<CTAButton href="/checkout">Enrol Now</CTAButton>
+						<a href="https://forms.gle/6yW1xD332eF8aMiR7" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all hover:scale-[1.02] bg-(--brand-primary) text-white hover:bg-(--brand-primary)/90">
+							Enrol Now
+						</a>
 						<CTAButton href="mailto:admin@xai.hk" variant="secondary">
 							Contact Us
 						</CTAButton>
