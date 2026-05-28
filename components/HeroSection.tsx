@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const heroImages = [
-  { src: '/images/1710745047330.jpeg', style: { objectPosition: '65% top' }, loading: 'eager' as const, kenBurns: true },
-  { src: '/images/1749016530338.gif', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
-  { src: '/images/digital_submit.jpeg', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
-  { src: '/images/hsbc_acessibility.jpeg', style: { objectPosition: '65% top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/hero05.jpg', style: { objectPosition: '65% top' }, loading: 'eager' as const, kenBurns: true },
+  { src: '/images/hero02.jpeg', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/hero03.jpg', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
+  { src: '/images/hero04.jpg', style: { objectPosition: 'center top' }, loading: 'lazy' as const, kenBurns: false },
 ];
 
 export default function HeroSection() {

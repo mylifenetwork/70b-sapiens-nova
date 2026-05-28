@@ -143,12 +143,15 @@ const partnerGroups: PartnerGroup[] = [
 		category: 'Clients',
 		logos: [
 			{ title: 'HSBC', image: '/images/HSBC_logo_(2018).svg.png', alt: 'HSBC logo',href: 'https://www.hsbc.com.hk/zh-hk/' },
-			{ title: 'Standard Chartered', image: '/images/standard_logo.png', alt: 'Standard Chartered logo', href: 'https://www.sc.com/hk/zh/' },
+			{ title: 'Standard Chartered', image: '/images/standard_logo.png', alt: 'Standard Chartered logo', href: 'https://av.sc.com/hk/zh/cybersecurity-sign-language/?intcid=web_listing-sc_com_top_nav-na-staticmedia_others-sng-na-hs_cybersecurity_sign_language-sc_com_organic-hk-zh' },
 		],
 	},
 	{
 		category: 'Universities',
-		logos: [{ title: 'HKU', image: '/images/HKU.png', alt: 'HKU emblem', href: 'https://www.hku.hk/' }],
+		logos: [
+			{ title: 'HKU', image: '/images/HKU.png', alt: 'HKU emblem', href: 'https://www.hku.hk/' },
+			{ title: 'PolyU', image: '/images/polyu_logo.png', alt: 'PolyU emblem', href: 'https://www.polyu.edu.hk/about-polyu/university-identity/' },
+		],
 	},
 	{
 		category: 'NGOs',
